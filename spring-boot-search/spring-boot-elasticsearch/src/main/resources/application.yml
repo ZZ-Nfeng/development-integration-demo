@@ -1,0 +1,3 @@
+spring:
+  elasticsearch:
+    uris: ${REMOTE_URL:127.0.0.1}:9200

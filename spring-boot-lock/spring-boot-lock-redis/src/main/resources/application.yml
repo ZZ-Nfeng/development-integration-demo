@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: spring-boot-lock-redis
+  # 数据库链接 要改成自己的数据链接信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_URL:127.0.0.1}:3306/lock-test?autoReconnect=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: ${MYSQL_PASSWORD:abc123}
+    hikari:
+      max-lifetime: 500000
+  # redis链接，要改成自己的链接配置
+  redis:
+    host: ${REDIS_URL:127.0.0.1}
+    port: 6379
+    password: ${REDIS_PASSWORD:abc123}
+    database: 11
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-mq</artifactId>
+        <groupId>top.bulk</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <artifactId>spring-boot-mq-rabbit</artifactId>
+
+    <description>spring boot 集成 Rabbitmq 相关的示例</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <modules>
+        <module>spring-boot-mq-rabbit-basics</module>
+        <module>spring-boot-mq-rabbit-ack</module>
+        <module>spring-boot-mq-rabbit-confirm</module>
+        <module>spring-boot-mq-rabbit-transaction</module>
+        <module>spring-boot-mq-rabbit-concurrency</module>
+        <module>spring-boot-mq-rabbit-batch-send</module>
+        <module>spring-boot-mq-rabbit-batch-consume</module>
+        <module>spring-boot-mq-rabbit-delay</module>
+        <module>spring-boot-mq-rabbit-consumer-cluster</module>
+        <module>spring-boot-mq-rabbit-consumer-broadcast</module>
+        <module>spring-boot-mq-rabbit-sequence</module>
+    </modules>
+
+</project>

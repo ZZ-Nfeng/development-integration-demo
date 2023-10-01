@@ -1,0 +1,16 @@
+# spring-boot-bloom-filter 中的一些测试请求
+
+### 这是一个正常的查询
+GET http://localhost:8080/product/1
+
+### 这是一个不正常正常的查询
+GET http://localhost:8080/product/999999
+
+### 新增产品
+POST http://localhost:8080/product/add
+Content-Type: application/json
+
+{
+  "productName": "测试产品",
+  "productPrice": 9.9
+}

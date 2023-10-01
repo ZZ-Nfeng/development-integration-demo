@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-boot-mq-rabbit-basics
+  # RabbitMQ 配置项，对应 RabbitProperties 配置类
+  rabbitmq:
+    host: ${REMOTE_URL:127.0.0.1}
+    port: 5672
+    username: admin
+    password: admin
+    # 虚拟 host 可以不设置,使用 server 默认 host
+    # virtual-host: bulkJavaHost
+    # 手动提交消息
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+#      direct:
+#        acknowledge-mode: manual

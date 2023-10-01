@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-boot-mq-redis
+  # redis链接，要改成自己的链接配置
+  redis:
+    host: ${REDIS_URL:127.0.0.1}
+    port: 6379
+    password: ${REDIS_PASSWORD:abc123}
+    database: 11

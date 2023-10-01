@@ -1,0 +1,21 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: spring-boot-mq-rabbit-concurrency
+  # RabbitMQ 配置项，对应 RabbitProperties 配置类
+  rabbitmq:
+    host: ${REMOTE_URL:127.0.0.1}
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      # 选择的 ListenerContainer 的类型。默认为 simple 类型
+      type: simple
+      simple:
+        # 每个 @ListenerContainer 的并发消费的线程数
+        concurrency: 2
+        # 每个 @ListenerContainer 允许的并发消费的线程数
+        max-concurrency: 10
+
+

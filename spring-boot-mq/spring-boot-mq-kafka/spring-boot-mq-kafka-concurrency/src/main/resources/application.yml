@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: spring-boot-mq-kafka-concurrency
+  # Kafka 配置项，对应 KafkaProperties 配置类
+  kafka:
+    bootstrap-servers: ${REMOTE_URL:127.0.0.1}:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    # Kafka Producer 配置项
+    producer:
+      acks: 1 # 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
+      retries: 3 # 发送失败时，重试发送的次数
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # 消息的 key 的序列化
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer # 消息的 value 的序列化
+    # Kafka Consumer 配置项
+    consumer:
+      auto-offset-reset: earliest # 设置消费者分组最初的消费进度为 earliest ，防止消息丢失。
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              # 配置 信任， 不然消费时候会抛异常 is not in the trusted packages
+              packages: top.bulk.mq.kafka.concurrency.message
+    # 下面这个参数可以设置全局的消费者并发参数，
+#    listener:
+#      concurrency: 2
+# 日志太多了，不好看输出效果，先只打印 WARN 级别，这里是非必须的配置
+logging:
+  level:
+    org:
+      springframework:
+        kafka: WARN
+      apache:
+        kafka: WARN

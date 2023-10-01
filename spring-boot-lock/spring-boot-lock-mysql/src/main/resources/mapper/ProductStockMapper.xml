@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.bulk.lock.mysql.mapper.ProductStockMapper">
+
+    <resultMap type="top.bulk.lock.mysql.entity.ProductStock" id="ProductStockMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="stock" column="stock" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <update id="reduceStockOptimism">
+        update product_stock
+        set stock   = stock - 1,
+            version = version + 1
+        where id = #{id}
+          and version = #{version}
+    </update>
+
+    <update id="reduceStock">
+        update product_stock
+        set stock = stock - 1
+        where id = #{id}
+    </update>
+
+    <select id="selectForLock" resultType="top.bulk.lock.mysql.entity.ProductStock">
+        select *
+        from product_stock
+        where id = #{id} for
+        update
+    </select>
+
+
+</mapper>
+
